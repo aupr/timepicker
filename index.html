@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="timepicker.css">
+    <script src="../lcdn/jquery/3.1.0/jquery-3.1.0.js"></script>
+    <script src="timepicker.js"></script>
+</head>
+<body>
+    <div id="mainDiv" style="position: relative; z-index: 300; width: 600px; height: 400px; margin: auto; padding: 20px; background-color: darkolivegreen;">
+        <span class="ChildSpan" style="z-index: 300;">
+            <label for="time-picker">Time :</label>
+            <input id="time-picker" class="it-has-time-picker">
+             <label for="time-picker2">Time :</label>
+            <input id="time-picker2" class="it-has-time-picker" style="z-index: 8;">
+        </span>
+    </div>
+<script>
+
+    function it_get_Zindex( elem ) {
+        var position, value;
+        while ( elem.length && elem[ 0 ] !== document ) {
+            position = elem.css( "position" );
+            if ( position === "absolute" || position === "relative" || position === "fixed" ) {
+                value = parseInt( elem.css( "zIndex" ), 10 );
+                if ( !isNaN( value ) && value !== 0 ) {
+                    return value;
+                }
+            }
+            elem = elem.parent();
+        }
+        return 0;
+    }
+
+    (function( $ ){
+        $.fn.myfunction = function() {
+            //alert('hello world');
+            //console.log(this);
+            //return this;
+            //console.log(this.position());
+            //console.log(this.height());
+            //console.log(this.width());
+            //console.log(this.parent());
+            //console.log(this.parents());
+            console.log(it_get_Zindex(this));
+            //this.after( "<div style='height: 100px; width: 100px; background-color: yellow;'>Test</div>" );
+        };
+    })( jQuery );
+
+    $("#time-picker").myfunction();
+</script>
+</body>
+</html>

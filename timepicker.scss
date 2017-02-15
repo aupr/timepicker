@@ -1,0 +1,10 @@
+.it-has-time-picker{
+  background-color: red;
+  &:after{
+    //content: "Aman";
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    z-index: 100;
+  }
+}

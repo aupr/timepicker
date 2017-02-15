@@ -1,0 +1,9 @@
+.it-has-time-picker {
+  background-color: red; }
+  .it-has-time-picker:after {
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    z-index: 100; }
+
+/*# sourceMappingURL=timepicker.css.map */
