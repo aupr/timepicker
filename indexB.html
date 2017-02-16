@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="timepicker.css">
+    <script src="../lcdn/jquery/3.1.0/jquery-3.1.0.js"></script>
+    <script src="timepicker.js"></script>
+    <style>
+        .test{
+            height: 100px;
+            width: 80px;
+            background-color: blue;
+        }
+        .test:before{
+            border-bottom: 10px solid red;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            content: "";
+            display: inline-block;
+            position: absolute;
+            margin: -7px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainDiv" style="position: inherit; z-index: 300; width: 600px; height: 1000px; margin: auto; padding: 20px; background-color: darkolivegreen;">
+        <div style="width: 100px; height: 100px; background-color: yellow; position: absolute; top: 20px; left: 20px;"></div>
+        <span class="ChildSpan" style="z-index: 300;">
+            <label for="time-picker">Time :</label>
+            <input id="time-picker" class="it-has-time-picker">
+             <label for="time-picker2">Time :</label>
+            <input id="time-picker2" class="it-has-time-picker" style="z-index: 8;">
+        </span>
+        <div class="test"></div>
+    </div>
+<script>
+
+    function loadStyle(url, callback){
+        var link = document.createElement( "link" );
+        link.href = url;
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.media = "screen,print";
+        link.onreadystatechange = callback;
+        link.onload = callback;
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    }
+
+    function loadScript(url, callback)
+    {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        script.onreadystatechange = callback;
+        script.onload = callback;
+        head.appendChild(script);
+    }
+
+    function it_get_Zindex( elem ) {
+        var position, value;
+        while ( elem.length && elem[ 0 ] !== document ) {
+            position = elem.css( "position" );
+            if ( position === "absolute" || position === "relative" || position === "fixed" ) {
+                value = parseInt( elem.css( "zIndex" ), 10 );
+                if ( !isNaN( value ) && value !== 0 ) {
+                    return value;
+                }
+            }
+            elem = elem.parent();
+        }
+        return 0;
+    }
+
+    (function( $ ){
+        $.fn.myfunction = function() {
+            //alert('hello world');
+            //console.log(this);
+            //return this;
+            //console.log(this.position());
+            //console.log(this.height());
+            //console.log(this.width());
+            //console.log(this.parent());
+            //console.log(this.parents());
+            //console.log(it_get_Zindex(this));
+            //this.after( "<div style='height: 100px; width: 100px; background-color: yellow;'>Test</div>" );
+
+            var dp = document.createElement('div');
+            dp.id = 'it-timepicker-div';
+            dp.className = 'it-timepicker it-corner-all';
+            //dp.style = 'z-index:34;';
+
+            var sn = document.createElement('span');
+            sn.id = 'fun-span';
+            sn.className = 'thisSpan';
+
+            dp.appendChild(sn);
+
+            document.getElementsByTagName('body')[0].appendChild(dp);
+
+
+        };
+    })( jQuery );
+
+    function appendit(ind) {
+        //return $('#it-timepicker-div').attr("style",ind);
+        $('#it-timepicker-div').css(ind);
+    }
+
+    $("#time-picker").myfunction();
+</script>
+</body>
+</html>
